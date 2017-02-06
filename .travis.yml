@@ -1,5 +1,13 @@
 language: java
 install:
- - mvn install
+- mvn install
 jdk:
- - oraclejdk8
+- oraclejdk8
+deploy:
+  provider: heroku
+  api_key:
+    secure: A+4f+kXsE/1BuD4JBNOMKMy9TPftSgJfDNZeQoKCZ2OPTBBNkreT3/YhbaogKlj87j9IKNl6xhz6gz5sZ3wb4BogXqCbp0h0N59KHmXFHbGUeZXpDSP1cFvYKWMFXEh59oZHt2BaqGf9KGLLi4QzQ1utU698589pX3cQ224pOHLGjG/JswwL8pmDjwEFg+p4m2tA7GNyMxnCjLOgU8yM5nlAcCyDNlfFV1Zu1N/dh3Ir8mzF+0B1ZfI3z5T8x4YKOmFiO55uc+F3J+hgpbQKXW44nvrVBLnDkwFvYpnnTr/iNiP+kERUt12x0GRUE5ovrdBcUxIG1G11DXKgqQF2ZlWFAT23gOehjKZF3LXBydOdZ7VOuuuMYOMSCaXKh4/p094+xvsAwf49CV60VyIFDGMsLDhMDgwK/CtorGJpeV3n/qW3TTrYd2B3rkwAwLyPKfr/qkHRFBjy8vKuZ46QsWUBuv7ETJroA8paoBdamn6mvYuPnvH7KHMLKvwY4n8U58Si1OuJDDRsBplwTUrH1kfanxrOvKc7jlOj9gRlulyR0E7jdGfFB3DtYVonqygOwaFPxEP/ouRkPrBbvj8I8ABCXYLHl0O8t5Y/QzHcKFEVrDOE0KzR6uJX8cVf5L8OUsWv7iO7oT/e2FHoGAZLPU/JFy4CSHnVX/CQT4OYxzY=
+  app: addressbook
+  on:
+    repo: jonathanignacio/addressbook
+    branch: todo_tasks
