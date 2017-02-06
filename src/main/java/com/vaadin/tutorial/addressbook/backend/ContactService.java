@@ -24,6 +24,8 @@ public class ContactService {
             "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor",
             "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin",
             "Thompson", "Young", "King", "Robinson" };
+    static String[] verbs = {"Eat", "Grow", "Pet", "Fix", "Record", "Remake", "Break", "Do"};
+    static String[] nouns = {"grapes", "trees", "chickens", "doors", "houses", "cacti", "anything", "nothing"};
 
     private static ContactService instance;
 
@@ -37,13 +39,11 @@ public class ContactService {
             for (int i = 0; i < 100; i++) {
                 Contact contact = new Contact();
                 contact.setFirstName(fnames[r.nextInt(fnames.length)]);
-                contact.setLastName(lnames[r.nextInt(fnames.length)]);
-                contact.setEmail(contact.getFirstName().toLowerCase() + "@"
-                        + contact.getLastName().toLowerCase() + ".com");
-                contact.setPhone("+ 358 555 " + (100 + r.nextInt(900)));
-                cal.set(1930 + r.nextInt(70),
-                        r.nextInt(11), r.nextInt(28));
-                contact.setBirthDate(cal.getTime());
+                contact.setLastName(lnames[r.nextInt(lnames.length)]);
+                contact.setTask(verbs[r.nextInt(verbs.length)] + " " + nouns[r.nextInt(nouns.length)]);
+                contact.setStartDate(cal.getTime());
+                cal.setTimeInMillis(cal.getTimeInMillis() + (long)8.64e+7); //set the calendar date one week later
+                contact.setEndDate(cal.getTime());
                 contactService.save(contact);
             }
             instance = contactService;
