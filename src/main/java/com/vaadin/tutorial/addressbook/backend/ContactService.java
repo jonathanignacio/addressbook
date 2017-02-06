@@ -24,8 +24,8 @@ public class ContactService {
             "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor",
             "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin",
             "Thompson", "Young", "King", "Robinson" };
-    static String[] verbs = {"Eat", "Grow", "Pet", "Fix", "Record", "Remake", "Break", "Do"};
-    static String[] nouns = {"grapes", "trees", "chickens", "doors", "houses", "cacti", "anything", "nothing"};
+    static String[] verbs = {"Eat", "Grow", "Pet", "Fix", "Record", "Remake", "Break", "Buy", "Sell"};
+    static String[] nouns = {"grapes", "trees", "chickens", "doors", "houses", "cacti", "anything", "nothing", "everything"};
 
     private static ContactService instance;
 

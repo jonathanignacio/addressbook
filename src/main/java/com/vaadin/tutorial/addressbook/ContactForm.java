@@ -23,6 +23,7 @@ import com.vaadin.v7.ui.TextField;
  */
 public class ContactForm extends FormLayout {
 
+	Button delete = new Button("Delete", this::delete);
     Button save = new Button("Save", this::save);
     Button cancel = new Button("Cancel", this::cancel);
     TextField firstName = new TextField("First name");
@@ -57,12 +58,30 @@ public class ContactForm extends FormLayout {
         setSizeUndefined();
         setMargin(true);
 
-        HorizontalLayout actions = new HorizontalLayout(save, cancel);
+        HorizontalLayout actions = new HorizontalLayout(delete, save, cancel);
         actions.setSpacing(true);
 
         addComponents(actions, firstName, lastName, task, startDate, endDate);
     }
+    
+    /* allows the deletion of individual entries */
+    public void delete(Button.ClickEvent event) {
+        try {
+            // Commit the fields from UI to DAO
+            formFieldBindings.commit();
 
+            // Save DAO to backend with direct synchronous service API
+            getUI().service.delete(contact);
+
+            String msg = String.format("Deleted '%s %s'.", contact.getFirstName(),
+                    contact.getLastName());
+            Notification.show(msg, Type.TRAY_NOTIFICATION);
+            getUI().refreshContacts();
+        } catch (FieldGroup.CommitException e) {
+            // Validation exceptions could be shown here
+        }
+    }
+    
     /*
      * Use any JVM language.
      *
